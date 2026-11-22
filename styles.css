@@ -2173,3 +2173,22 @@ html, body { overflow-x: hidden; }
   .cta-right { left: 89%; top: 42%; }
   .t-f { left: -40px; top: 150px; }
 }
+
+/* Let's talk tiles v2 — snapped to the 64px grid in brick rows; right cluster mirrors the left */
+.cta-plane { transform: rotateX(58deg) rotateZ(-42deg); }
+.cta-right { transform: scaleX(-1) rotateX(58deg) rotateZ(-42deg); }
+.cta-right .tile i svg { transform: scaleX(-1); }          /* keep icons readable when mirrored */
+.cta-left, .cta-right { top: 50%; }
+.cta-left  { left: 15%; }
+.cta-right { left: 85%; }
+.tile { width: 224px; height: 96px; border-radius: 28px; }  /* 3.5 × 1.5 grid cells */
+.tile.sq { width: 96px; }
+/* row 1: wide + square   |   row 2: wide, offset half a tile (brick) */
+.t-a, .t-d { left: -288px; top: -128px; transform: none; }
+.t-c, .t-f { left: -32px;  top: -128px; transform: none; }
+.t-b, .t-e { left: -160px; top: 0;      transform: none; }
+@media (max-width: 860px) {
+  .cta-left, .cta-right { top: auto; bottom: 120px; }
+  .cta-left  { left: 24%; transform: rotateX(58deg) rotateZ(-42deg) scale(0.6); }
+  .cta-right { left: 76%; transform: scaleX(-1) rotateX(58deg) rotateZ(-42deg) scale(0.6); }
+}
