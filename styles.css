@@ -2053,3 +2053,10 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
 @media (max-width: 860px) {
   .nav-ind { display: none; }
 }
+
+/* No sideways scrolling: clip anything that runs past the screen edges (e.g. the hero logo copies).
+   'clip' (unlike 'hidden') doesn't create a scroll container, so the sticky navbar keeps working. */
+html, body { overflow-x: hidden; }
+@supports (overflow: clip) {
+  html, body { overflow-x: clip; }
+}
