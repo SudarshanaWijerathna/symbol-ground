@@ -1,0 +1,5 @@
+# design sources and editor settings (not part of the website)
+*.ai
+design-style-reference.md
+.mcp.json
+.claude/
