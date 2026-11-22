@@ -2086,3 +2086,90 @@ html, body { overflow-x: hidden; }
 .nav-toggle .bars i:last-child  { top: 8px; }
 .nav.open .nav-toggle .bars i:first-child { top: 4px; transform: rotate(45deg); }
 .nav.open .nav-toggle .bars i:last-child  { top: 4px; transform: rotate(-45deg); }
+
+/* ==========================================================
+   "Let's talk" card — tilted grid + floating contact tiles (same style as the portfolio cards)
+   ========================================================== */
+.cta { overflow: hidden; isolation: isolate; }
+.cta-art { position: absolute !important; inset: 0; z-index: 0 !important; pointer-events: none; }
+.cta > :not(.cta-art):not(.glow-c) { position: relative; z-index: 1; }
+.cta-plane {
+  position: absolute;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(58deg) rotateZ(-42deg);
+}
+.cta-plane::before {                 /* grid in the tilted plane, fading out */
+  content: "";
+  position: absolute;
+  left: -520px;
+  top: -520px;
+  width: 1040px;
+  height: 1040px;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center;
+  -webkit-mask-image: radial-gradient(closest-side, #000 25%, transparent 100%);
+          mask-image: radial-gradient(closest-side, #000 25%, transparent 100%);
+  transform: translateZ(-2px);
+}
+.cta-left  { left: 13%; top: 56%; }
+.cta-right { left: 87%; top: 46%; }
+
+.tile {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 230px;
+  height: 92px;
+  padding: 0 22px;
+  border-radius: 26px;
+  color: rgba(255, 255, 255, 0.85);
+  background:
+    radial-gradient(120% 140% at 30% 0%, rgba(255, 255, 255, 0.06), transparent 60%),
+    linear-gradient(160deg, #35383e 0%, #2b2e33 55%, #26292d 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    -0.6px 0.8px 0 #1c1e22, -1.2px 1.6px 0 #1c1e22, -1.9px 2.4px 0 #1b1d21, -2.5px 3.2px 0 #1b1d21,
+    -3.1px 3.9px 0 #1a1c20, -3.7px 4.7px 0 #1a1c20, -4.3px 5.5px 0 #191b1f, -4.9px 6.3px 0 #191b1f,
+    -5.5px 7.1px 0 #181a1e, -6.2px 7.9px 0 #17191d, -6.8px 8.7px 0 #16181c, -7.4px 9.5px 0 #121418,
+    -22px 30px 40px rgba(0, 0, 0, 0.55);
+}
+.tile i {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.tile svg { width: 26px; height: 26px; }
+.tile span { flex: 1; display: grid; gap: 10px; }
+.tile b { height: 8px; border-radius: 4px; background: rgba(255, 255, 255, 0.16); }
+.tile b:last-child { width: 62%; background: rgba(255, 255, 255, 0.09); }
+.tile.sq { width: 92px; padding: 0; justify-content: center; }
+/* positions inside each tilted plane (x along the row, y along the column) + lift */
+.t-a { left: -200px; top: -120px; transform: translateZ(0); }
+.t-b { left: -150px; top: 20px;   transform: translateZ(36px); }
+.t-c { left: 70px;   top: -150px; transform: translateZ(18px); }
+.t-d { left: -60px;  top: -110px; transform: translateZ(0); }
+.t-e { left: -110px; top: 30px;   transform: translateZ(36px); }
+.t-f { left: -230px; top: -40px;  transform: translateZ(18px); }
+
+@media (max-width: 860px) {
+  .cta { padding-bottom: 300px; }
+  .cta-left  { left: 30%; top: auto; bottom: 120px; }
+  .cta-right { left: 92%; top: auto; bottom: 40px; }
+  .cta-plane { transform: rotateX(58deg) rotateZ(-42deg) scale(0.72); }
+  .cta-plane::before { background-size: 55.5px 55.5px; }   /* ≈40px on screen, like the other mobile grids */
+}
+@media (min-width: 861px) {
+  .cta-right { left: 89%; top: 42%; }
+  .t-f { left: -40px; top: 150px; }
+}
