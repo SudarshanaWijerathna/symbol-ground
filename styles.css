@@ -2033,7 +2033,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
 /* ==========================================================
    Nav: sliding active-tab underline (desktop); mobile menu keeps its dot
    ========================================================== */
-.nav-links { position: relative; }
+@media (min-width: 861px) { .nav-links { position: relative; } }   /* mobile menu stays absolutely positioned */
 .nav-ind {
   position: absolute;
   left: 0;
@@ -2059,4 +2059,14 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
 html, body { overflow-x: hidden; }
 @supports (overflow: clip) {
   html, body { overflow-x: clip; }
+}
+
+/* Mobile navbar: logo name never wraps; menu button is a rounded square */
+.logo { white-space: nowrap; flex-shrink: 0; }
+@media (max-width: 860px) {
+  .nav-toggle { border-radius: 14px; flex-shrink: 0; }
+}
+@media (max-width: 360px) {
+  .logo { font-size: 16px; gap: 10px; }
+  .logo img { width: 24px; height: 24px; }
 }
