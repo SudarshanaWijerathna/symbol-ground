@@ -2173,3 +2173,7 @@ html, body { overflow-x: hidden; }
   .cta-right { left: 89%; top: 42%; }
   .t-f { left: -40px; top: 150px; }
 }
+
+/* single-icon tiles: no text-lines slot, so the icon sits exactly in the centre */
+.tile.sq { gap: 0; }
+.tile.sq span { display: none; }
